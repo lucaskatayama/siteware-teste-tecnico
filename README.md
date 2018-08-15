@@ -21,7 +21,7 @@ A aplicação deverá possuir os seguintes recursos:
 
 - Você poderá usar as tecnologias que desejar. 
 - A informação de favoritos deve ser salva em banco de dados.
-- A entrega do projeto pode ser feita via fork/pull-request neste repositório
+- A entrega do projeto pode ser feita via fork/pull-request neste repositório, bem como as instruções para buildar e rodar o sistema.
 
 
 
