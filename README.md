@@ -17,7 +17,7 @@ A aplicação deverá possuir os seguintes recursos:
 ### 5. Remoção de favoritos
    Eu como usuário final devo conseguir remover uma cidade favoritada.
 
-## Informaões importantes:
+## Informações importantes:
 
 - Você poderá usar as tecnologias que desejar. 
 - A informação de favoritos deve ser salva em banco de dados.
