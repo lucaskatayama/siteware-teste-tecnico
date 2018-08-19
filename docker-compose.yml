@@ -1,0 +1,33 @@
+version: "3.3"
+
+services:
+  server:
+    build: ./server
+    volumes:
+      - ./server:/go/src/github.com/diegoprates/siteware-test/server
+    ports:
+      - 5000:5000
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=siteware-test
+      - POSTGRES_USER=siteware-test
+      - POSTGRES_PASSWORD=siteware-test-pass
+    networks:
+      - api
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - ./.local-db-data/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=siteware-test
+      - POSTGRES_USER=siteware-test
+      - POSTGRES_PASSWORD=siteware-test-pass
+    networks:
+      - api
+
+networks:
+  api:
+    driver: "bridge"
