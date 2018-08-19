@@ -1,32 +1,105 @@
-# Teste técnico - Siteware
+# Client
 
-# Aplicação Web usando Api do OpenWeatherMap
+To start client, first install dependencies `cd client && npm i` than you can run `npm run start` to start in development mode or `npm run serve` to build and serve this client.
 
-O teste consiste em criar um aplicação Web que se comunique com a [API do OpenWeatherMap](https://openweathermap.org/) para obter informações de tempo de uma determinada cidade que o usuário está buscando.
+You should be able to see client at `http://localhost:8080`
 
-A aplicação deverá possuir os seguintes recursos:
+# API
 
-### 1. Busca de cidades
-   Eu como usuário final devo conseguir buscar a informação de tempo por nome de cidade.
-### 2. Visualização de informação de tempo
-   Eu como usuário final devo conseguir visualizar as informações de tempo da cidade buscada.
-### 3. Criação de Favoritos
-   Eu como usuário final devo conseguir favoritar a cidade para acessá-lo posteriormente.
-### 4. Visualização dos favoritos
-   Eu como usuário final devo conseguir visualizar de forma rápida as informações de tempo das cidades favoritadas
-### 5. Remoção de favoritos
-   Eu como usuário final devo conseguir remover uma cidade favoritada.
+## Install
 
-## Informações importantes:
+To start API run command below from root folder
 
-- Você poderá usar as tecnologias que desejar. 
-- A informação de favoritos deve ser salva em banco de dados.
-- A entrega do projeto pode ser feita via fork/pull-request neste repositório, bem como as instruções para buildar e rodar o sistema.
+`docker-compose up -d`
 
+To enter API container run the command below
 
+`docker exec -ti siteware-test_server_1 /bin/bash`
 
+Where `siteware-test_server_1` is the container name.
 
+Inside the container run you can run `go test github.com/diegoprates/siteware-test/server/favorites`
 
+to run tests. You can also run the same command with `--cover` to see coverage.
 
+## Endpoints
 
+## **/favorites**
 
+Get all favorites
+
+- **Method:**
+
+  `GET`
+
+- **URL Params**
+
+  None
+
+- **Data Params**
+
+  None
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content**
+
+```json
+[
+  {
+    "id": 3447259
+  },
+  {
+    "id": 3447258
+  }
+]
+```
+
+---
+
+## **/favorites**
+
+Create a new favorite
+
+- **Method:**
+
+  `POST`
+
+- **URL Params**
+
+  None
+
+- **Data Params**
+
+  **Required:**
+
+  `{"id": 1234567}`
+
+- **Success Response:**
+
+  - **Code:** 201 <br />
+
+  ***
+
+## **/favorites/:id**
+
+Delete favorite based on favorite ID
+
+- **Method:**
+
+  `DELETE`
+
+- **URL Params**
+
+  **Required:**
+
+  `id=[int]`
+
+- **Data Params**
+
+  None
+
+- **Success Response:**
+
+  - **Code:** 200 <br />

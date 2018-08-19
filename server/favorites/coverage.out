@@ -1,0 +1,25 @@
+mode: set
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:30.54,32.16 2 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:36.2,36.36 1 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:32.16,34.3 1 0
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:44.54,47.36 2 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:51.2,51.52 1 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:55.2,55.40 1 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:47.36,49.3 1 0
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:51.52,53.3 1 0
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:59.54,61.14 2 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:65.2,66.16 2 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:70.2,70.51 1 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:74.2,74.35 1 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:61.14,63.3 1 1
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:66.16,68.3 1 0
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:70.51,72.3 1 0
+github.com/diegoprates/siteware-test/server/favorites/favorites.go:78.43,82.2 1 1
+github.com/diegoprates/siteware-test/server/favorites/storage.go:13.48,15.2 1 0
+github.com/diegoprates/siteware-test/server/favorites/storage.go:17.48,20.55 2 0
+github.com/diegoprates/siteware-test/server/favorites/storage.go:24.2,24.22 1 0
+github.com/diegoprates/siteware-test/server/favorites/storage.go:20.55,22.3 1 0
+github.com/diegoprates/siteware-test/server/favorites/storage.go:27.42,33.2 3 0
+github.com/diegoprates/siteware-test/server/favorites/storage.go:35.43,36.91 1 0
+github.com/diegoprates/siteware-test/server/favorites/storage.go:40.2,40.12 1 0
+github.com/diegoprates/siteware-test/server/favorites/storage.go:36.91,38.3 1 0
