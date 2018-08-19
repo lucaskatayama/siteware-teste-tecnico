@@ -1,19 +1,3 @@
-gerar arquivo coverage.out
-
-`go test -coverprofile=coverage.out`
-
-abrir no browser
-
-`go tool cover -html=coverage.out`
-
-cd favorites
-
-go test
-
-go test -cover
-
----
-
 # Client
 
 To start client, first install dependencies `cd client && npm i` than you can run `npm run start` to start in development mode or `npm run serve` to build and serve this client.
