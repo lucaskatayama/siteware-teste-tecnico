@@ -1,0 +1,25 @@
+{% extends "weather/base.html" %}
+
+{% block content %}
+        <p>     
+            City: {{weather.name}} <br>
+            Description: {{weather.desc}} <br>
+            Temperature: {{weather.temp}} Max: {{weather.temp_max}} Min: {{weather.temp_min}} <br>
+        </p>
+
+        <form action="/add_fav" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{weather.id}}" id="city_id" />
+            <input type="hidden" value="{{weather.name}}" id="city_name" />
+        </form>
+
+            {% if fav == True %}
+                Already an favorite
+            {% else %}
+                <button id="favButton" onClick="addFavorite();">Add Favorite</button>
+            {% endif %}
+        
+        <div>
+            <a href='/index'>Go Back</a>
+        </div>
+{% endblock %}

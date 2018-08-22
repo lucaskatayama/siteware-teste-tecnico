@@ -1,0 +1,22 @@
+{% extends "weather/base.html" %}
+
+{% block content %}
+        <div>
+            Favorites
+            <table>
+                {% for fav in favorites %}
+                <tr id="{{fav.id}}">
+                    <td>
+                        {{fav.name}}
+                        {{fav.temp}}
+                        <button onclick="deleteFavorite('{{fav.id}}')">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <div>
+                <a href='/index'>Go Back</a>
+            </div>
+        </div>
+{% endblock %}
