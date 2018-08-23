@@ -2,21 +2,38 @@
 
 {% block content %}
         <div>
-            Favorites
-            <table>
-                {% for fav in favorites %}
-                <tr id="{{fav.id}}">
-                    <td>
-                        {{fav.name}}
-                        {{fav.temp}}
-                        <button onclick="deleteFavorite('{{fav.id}}')">Delete</button>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
 
             <div>
-                <a href='/index'>Go Back</a>
+                <button style="margin:2%" class="btn btn-primary" onClick="location.href='/index'">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Go Back
+                </button>
             </div>
+
+            <div style='margin:2%'>
+                <div id="title">
+                    <h4>Favorite's weathers</h4>
+                </div>
+        
+                <table class="table">
+                    <tr>
+                        <th scope="col">City Name</th>
+                        <th scope="col">Avg. Temp</th>
+                        <th scope="col">Max. Temp</th>
+                        <th scope="col">Min. Temp</th>
+                        <th scope="col" colspan="2">Current Weather</th>
+                    </tr>
+                    {% for fav in favorites %}
+                    <tr id="{{fav.id}}">
+                        <td>{{fav.name}}</td>
+                        <td>{{fav.temp}}°C</td>
+                        <td>{{fav.temp_max}}°C</td>
+                        <td>{{fav.temp_min}}°C</td>
+                        <td>{{fav.description}}</td>
+                        <td><button class="btn btn-danger" onclick="deleteFavorite('{{fav.id}}')">Delete</button></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            
         </div>
 {% endblock %}

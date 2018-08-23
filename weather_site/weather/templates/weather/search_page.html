@@ -1,16 +1,22 @@
 {% extends "weather/base.html" %}
 
 {% block content %}
+
+        <div id="title">
+            <h4>Search for a city's weather</h4>
+        </div>
+
         <div>
-            Search for city
             <form action="/search_weather" method="POST">
                 {% csrf_token %}
                 {{ form }}
-                <input type="submit" value="Buscar">
+                <input class='btn btn-primary' type="submit" value="Search">
             </form>
         </div>
 
         <div>
-            <a href='/favorites'>Favorites</a>
+            <button class='btn btn-primary' onClick="location.href='/favorites'">
+                <span class="glyphicon glyphicon-heart"></span> Favorites 
+            </button>
         </div>
 {% endblock %}

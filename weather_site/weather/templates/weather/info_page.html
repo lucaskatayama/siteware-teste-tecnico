@@ -1,10 +1,23 @@
 {% extends "weather/base.html" %}
 
 {% block content %}
+
+    <div>
+        <button style="margin:1%" class="btn btn-primary" onClick="location.href='/index'">
+            <span class="glyphicon glyphicon-arrow-left"></span> Go Back
+        </button>
+    </div>
+
+    <div style='margin-left:1%'>
+        <div id="title">
+            <h4>Weather in {{weather.name}}</h4>
+        </div>
+
         <p>     
-            City: {{weather.name}} <br>
-            Description: {{weather.desc}} <br>
-            Temperature: {{weather.temp}} Max: {{weather.temp_max}} Min: {{weather.temp_min}} <br>
+            <b>Description:</b> {{weather.description}} <br>
+            <b>Temperature: </b>{{weather.temp}}°C <br>
+            <b>Max:</b> {{weather.temp_max}}°C <br>
+            <b>Min:</b> {{weather.temp_min}}°C <br>
         </p>
 
         <form action="/add_fav" method="POST">
@@ -13,13 +26,10 @@
             <input type="hidden" value="{{weather.name}}" id="city_name" />
         </form>
 
-            {% if fav == True %}
-                Already an favorite
-            {% else %}
-                <button id="favButton" onClick="addFavorite();">Add Favorite</button>
-            {% endif %}
-        
-        <div>
-            <a href='/index'>Go Back</a>
-        </div>
+        {% if fav == True %}
+            <button class="fav-btn btn btn-danger" id="unfavButton" onClick="deleteFavorite({{weather.id}});">Remove Favorite</button>
+        {% else %}
+            <button class="fav-btn btn btn-success" id="favButton" onClick="addFavorite();">Add Favorite</button>
+        {% endif %}
+    </div>
 {% endblock %}
