@@ -27,6 +27,11 @@ TEMPKEY_FORM = 'form'
 RESPONSE_STATUS = 'statuts'
 RESPONSE_MSG = 'msg'
 
+#Error keys
+ERROR_STATUS = 'error_status_code'
+ERROR_MSG = 'error_msg'
+ERROR_TEMPLATE = 'template'
+
 #Status Code
 STATUS_CODE_OK = 200
 STATUS_CODE_BAD_REQUEST = 400

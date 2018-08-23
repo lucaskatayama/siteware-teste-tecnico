@@ -25,7 +25,10 @@ class Open_Weather:
         if r.status_code == WC.STATUS_CODE_OK:
             data = self.convert_weather_data(r.json())
         else:
-            data = {WC.KEY_ERROR: r.status_code}
+            data = {
+                WC.ERROR_STATUS: r.status_code,
+                WC.ERROR_MSG: r.content
+            }
 
         return data
 
@@ -43,11 +46,14 @@ class Open_Weather:
         str_id_array = ",".join(id_array)
         url = WC.CITY_BLOCK_URL.format(str_id_array, self.api_key)
         r = requests.get(url)
-
+        
         if r.status_code == WC.STATUS_CODE_OK:
             data = self.convert_weather_array(r.json())
         else:
-            data = {WC.KEY_ERROR: r.status_code}
+            data = {
+                WC.ERROR_STATUS: r.status_code,
+                WC.ERROR_MSG: r.content
+            }
 
         return data
 

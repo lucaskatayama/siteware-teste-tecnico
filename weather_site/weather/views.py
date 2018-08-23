@@ -4,13 +4,16 @@ from django.http import HttpResponse, JsonResponse
 from .models import City
 from .forms import LocationName
 from .weather_constants import weather_constants as WC
-from .open_weather import open_weather
+from .open_weather import open_weather, error_handler
 from django.conf import settings
 from django.db import connection
 import json
 
 #Initialize open weather class
 op_w = open_weather.Open_Weather()
+
+#Initialize error_handler class
+er_handler = error_handler.Error_Handler()
 
 # Create your views here.
 def del_fav(request):
@@ -79,12 +82,22 @@ def search_city_weather(request):
         if form.is_valid():
             location = form.cleaned_data[WC.KEY_LOCATION_NAME]
             weather = op_w.get_weather_from_city(location)
-            context[WC.KEY_WEATHER] = weather
 
-            #Check if already a favorite
-            if (City.objects.filter(api_id=weather[WC.TEMPKEY_ID]).exists()):
-                context[WC.TEMPKEY_FAV_BOOL] = True
+            if not WC.ERROR_STATUS in weather:
+                context[WC.KEY_WEATHER] = weather
+                #Check if already a favorite
+                if (City.objects.filter(api_id=weather[WC.TEMPKEY_ID]).exists()):
+                    context[WC.TEMPKEY_FAV_BOOL] = True
+            else:
+                #Handles the error
+                error = er_handler.handle(weather)
+                context[WC.KEY_ERROR] = error[WC.ERROR_MSG]
+                return render(request, error[WC.ERROR_TEMPLATE], context)
+
     else:
-        context = {WC.RESPONSE_STATUS: WC.STATUS_CODE_BAD_REQUEST, WC.RESPONSE_MSG:'NOK'}
+        error_data = {WC.ERROR_STATUS: WC.STATUS_CODE_BAD_REQUEST, WC.ERROR_MSG: 'Bad Request'}
+        error = er_handler.handle(error_data)
+        context[WC.KEY_ERROR] = error[WC.ERROR_MSG]
+        return render(request, error[WC.ERROR_TEMPLATE], context)
 
     return render(request, "weather/info_page.html", context=context)
