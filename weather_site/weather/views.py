@@ -69,17 +69,17 @@ def index(request):
 
 def favorite_page(request):
     favorites = City.objects.all()
+    context = {}
     id_array = []
 
     for fav in favorites:
         id_array.append(str(fav.api_id))
 
     #Get weather from all the favorites
-    weather_array = op_w.get_weather_from_many_cities(id_array)
+    if len(favorites) > 0:
+        weather_array = op_w.get_weather_from_many_cities(id_array)
+        context[WC.TEMPKEY_FAVORITE] = weather_array
 
-    context = {
-        WC.TEMPKEY_FAVORITE: weather_array
-    }
     return render(request, "weather/favorites_page.html", context=context)
 
 def search_city_weather(request):
