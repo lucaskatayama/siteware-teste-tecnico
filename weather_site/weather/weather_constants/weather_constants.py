@@ -24,7 +24,7 @@ TEMPKEY_FAVORITE = 'favorites'
 TEMPKEY_FORM = 'form'
 
 #Response keys
-RESPONSE_STATUS = 'statuts'
+RESPONSE_STATUS = 'status'
 RESPONSE_MSG = 'msg'
 
 #Error keys

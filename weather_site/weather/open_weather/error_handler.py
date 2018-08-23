@@ -7,6 +7,15 @@ class Error_Handler():
         }
 
     def handle(self, error_data):
+        '''
+            Handles errors from the API
+            
+            Input:
+                error_data: dictionary with both error status and message
+
+            Output:
+                dictionary with templates and context for the render of error page
+        '''
         error_code = str(error_data[WC.ERROR_STATUS])
         error_msg = str(error_data[WC.ERROR_MSG])
 

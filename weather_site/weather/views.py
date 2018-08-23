@@ -18,21 +18,29 @@ er_handler = error_handler.Error_Handler()
 # Create your views here.
 def del_fav(request):
     if request.method == 'POST':
-        api_id = request.POST[WC.KEY_ID]
+        try:
+            api_id = request.POST[WC.KEY_ID]
+        except:
+            response = {WC.RESPONSE_STATUS : WC.STATUS_CODE_BAD_REQUEST, WC.RESPONSE_MSG:'NOK'}
+            return JsonResponse(response)
 
         #Check if object exists
         if (not City.objects.filter(api_id=api_id).exists()) :
             response = {WC.RESPONSE_STATUS : WC.STATUS_CODE_BAD_REQUEST, WC.RESPONSE_MSG:'NOK'}
         else:
             City.objects.filter(api_id=api_id).all().delete()
-            response = {WC.RESPONSE_STATUS: WC.STATUS_CODE_NOT_FOUND, WC.RESPONSE_MSG:'OK'}
+            response = {WC.RESPONSE_STATUS: WC.STATUS_CODE_OK, WC.RESPONSE_MSG:'OK'}
 
     return JsonResponse(response)
 
 def add_fav(request):
     if request.method == 'POST':
-        city_name = request.POST[WC.KEY_NAME]
-        api_id = request.POST[WC.KEY_ID]
+        try:
+            city_name = request.POST[WC.KEY_NAME]
+            api_id = request.POST[WC.KEY_ID]
+        except:
+            response = {WC.RESPONSE_STATUS : WC.STATUS_CODE_BAD_REQUEST, WC.RESPONSE_MSG:'NOK'}
+            return JsonResponse(response)
 
         #Check if there is already a city on our database
         if (City.objects.filter(api_id=api_id).exists()) :
@@ -47,7 +55,6 @@ def add_fav(request):
 def index(request):
     context = {}
     if request.method == 'POST':
-        
         form = LocationName(request.POST)
         if form.is_valid():
             location = form.cleaned_data[WC.KEY_LOCATION_NAME]
@@ -62,12 +69,12 @@ def index(request):
 
 def favorite_page(request):
     favorites = City.objects.all()
-
     id_array = []
 
     for fav in favorites:
         id_array.append(str(fav.api_id))
 
+    #Get weather from all the favorites
     weather_array = op_w.get_weather_from_many_cities(id_array)
 
     context = {
@@ -83,6 +90,7 @@ def search_city_weather(request):
             location = form.cleaned_data[WC.KEY_LOCATION_NAME]
             weather = op_w.get_weather_from_city(location)
 
+            #Check if request was valid
             if not WC.ERROR_STATUS in weather:
                 context[WC.KEY_WEATHER] = weather
                 #Check if already a favorite
