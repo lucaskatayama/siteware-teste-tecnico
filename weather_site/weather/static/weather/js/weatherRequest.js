@@ -60,6 +60,7 @@ function toogleFavbutton(api_id) {
 
 /*
 * Setups Ajax to work with CSRF token
+* More details on: https://docs.djangoproject.com/pt-br/2.1/ref/csrf/
 */
 function setup_ajax() {
     var csrftoken = getCookie("csrftoken");
@@ -74,6 +75,7 @@ function setup_ajax() {
 
 /*
 * Returns methods that do not require the CSRK token
+* More details on: https://docs.djangoproject.com/pt-br/2.1/ref/csrf/
 */
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
@@ -82,6 +84,7 @@ function csrfSafeMethod(method) {
 
 /*
 * Gets a cookie from browser
+* More details on: https://docs.djangoproject.com/pt-br/2.1/ref/csrf/
 */
 function getCookie(name) {
     var cookieValue = null;
