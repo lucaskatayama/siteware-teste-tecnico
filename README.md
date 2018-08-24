@@ -8,7 +8,7 @@
 
 Para instalar a aplicação é necessário utilizar:
 
-- [Python 3.7](https://www.python.org/downloads/release/python-370/)
+- [Python 3](https://www.python.org/downloads/release/python-370/)
 - [Pip](https://pypi.org/project/pip/)
 
 Também é recomendado utilizar um ambiente virtual como o `virtualenv`
@@ -16,11 +16,13 @@ Também é recomendado utilizar um ambiente virtual como o `virtualenv`
 ### Passos da instalação
 
 1. Clone o repositório
-2. Instale as dependencias com:
+2. Instale as dependências com:
+- Lembre-se de usar o pip3 caso tenha mais de uma versão do Python instalada
 ```
 $ pip install -r requirements.txt
 ```
-3. Entre na pasta `weather_site`
+
+3. Entre na pasta `weather_site `
 ```
 $ cd weather_site
 ```

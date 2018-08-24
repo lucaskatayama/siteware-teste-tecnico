@@ -91,7 +91,7 @@ def search_city_weather(request):
             #Check if request was valid
             if not WC.ERROR_STATUS in weather:
                 context[WC.KEY_WEATHER] = weather
-                #Check if already a favorite
+                #Check if already a     favorite
                 if (City.objects.filter(api_id=weather[WC.TEMPKEY_ID]).exists()):
                     context[WC.TEMPKEY_FAV_BOOL] = True
             else:
