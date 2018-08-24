@@ -2,31 +2,45 @@
 
 # Aplicação Web usando Api do OpenWeatherMap
 
-O teste consiste em criar um aplicação Web que se comunique com a [API do OpenWeatherMap](https://openweathermap.org/) para obter informações de tempo de uma determinada cidade que o usuário está buscando.
+## Instalação
 
-A aplicação deverá possuir os seguintes recursos:
+### Dependencias:
 
-### 1. Busca de cidades
-   Eu como usuário final devo conseguir buscar a informação de tempo por nome de cidade.
-### 2. Visualização de informação de tempo
-   Eu como usuário final devo conseguir visualizar as informações de tempo da cidade buscada.
-### 3. Criação de Favoritos
-   Eu como usuário final devo conseguir favoritar a cidade para acessá-lo posteriormente.
-### 4. Visualização dos favoritos
-   Eu como usuário final devo conseguir visualizar de forma rápida as informações de tempo das cidades favoritadas
-### 5. Remoção de favoritos
-   Eu como usuário final devo conseguir remover uma cidade favoritada.
+Para instalar a aplicação é necessário utilizar:
 
-## Informações importantes:
+- [Python 3.7](https://www.python.org/downloads/release/python-370/)
+- [Pip](https://pypi.org/project/pip/)
 
-- Você poderá usar as tecnologias que desejar. 
-- A informação de favoritos deve ser salva em banco de dados.
-- A entrega do projeto pode ser feita via fork/pull-request neste repositório, bem como as instruções para buildar e rodar o sistema.
+Também é recomendado utilizar um ambiente virtual como o `virtualenv`
 
+### Passos da instalação
 
+1. Clone o repositório
+2. Instale as dependencias com:
+```
+$ pip install -r requirements.txt
+```
+3. Entre na pasta `weather_site`
+```
+$ cd weather_site
+```
+4. Provisione o banco de dados SQLite
+```
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+5. Execute a aplicação Django
+```
+$ python manage.py runserver
+```
+6. A aplicação pode ser acessada em [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
+### Rodando os testes
 
+Os testes unitários podem ser rodados na pasta `site_weather` executando o comando: 
 
-
+```
+$ python manage.py test
+```
 
 
