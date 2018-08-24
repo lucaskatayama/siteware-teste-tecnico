@@ -1,17 +1,12 @@
-from django.test import TestCase, RequestFactory
-from django.http import HttpResponse, JsonResponse
-from django.contrib.auth.models import User
+from django.test import TestCase
 from . import views
 from weather.models import City
-import json
+from .open_weather import open_weather
 
-# Create your tests here.
+# View Tests
 class CityTestCase(TestCase):
     def setUp(self):
         self.setDatabase()
-        self.factory = RequestFactory()
-        self.user = User.objects.create_user(
-            username='user', email='user@…', password='psswd')
 
     def setDatabase(self):
         City.objects.create(api_id=42, city_name='Gondor')
@@ -44,3 +39,4 @@ class CityTestCase(TestCase):
         self.client.post('/add_fav', {})
 
         self.assertEqual(len(City.objects.all()), 2)
+

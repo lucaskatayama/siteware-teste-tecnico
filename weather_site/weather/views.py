@@ -5,8 +5,6 @@ from .models import City
 from .forms import LocationName
 from .weather_constants import weather_constants as WC
 from .open_weather import open_weather, error_handler
-from django.conf import settings
-from django.db import connection
 import json
 
 #Initialize open weather class

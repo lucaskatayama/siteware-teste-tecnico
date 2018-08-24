@@ -1,12 +1,11 @@
 import requests
+from django.conf import settings
 from ..weather_constants import weather_constants as WC
 
 class Open_Weather:
     
     def __init__(self):
-        #TO DO
-        #ADD CONFIG_FILE
-        self.api_key = '39603afebd725c66d86b483fddbeac26'
+        self.api_key = settings.API_KEY
 
     def get_weather_from_city(self, city_name):
         '''
