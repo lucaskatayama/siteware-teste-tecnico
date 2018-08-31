@@ -1,4 +1,4 @@
-<div class="ui fluid card" id="card-show-weather">
+<div class="ui fluid card hidden" id="card-show-weather">
     <div class="content">
         <span class="card-city-name">City name</span>
         <span class="right floated meta card-country">Country Code</span>

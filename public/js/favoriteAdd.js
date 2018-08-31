@@ -1,4 +1,26 @@
 $(document).ready(function () {
+
+    for (var i = 0; i < $.localStorage.keys().length; i++) {
+        if ($.localStorage.keys()[i].match(/^[0-9]+$/) != null) {
+            var item = $("#favorite-item-template").children().clone();
+            item.prop('id', $.localStorage.keys()[i]);
+            item.text($.localStorage.get($.localStorage.keys()[i]));
+            item.appendTo("#favorite-segment");
+
+            var r = $('<button class="btn-favorite ui basic compact right floated mini button trash-favorite-icon-action-btn">' +
+                '<i class="trash fitted icon"></i><span class="city-id hidden">' + $.localStorage.keys()[i] + '</span></button>');
+            $(item).append(r);
+        }
+    }
+
+    $('#favorite-segment .favorite-item')
+        .transition({
+            animation : 'scale',
+            reverse   : 'auto', // default setting
+            interval  : 200
+        })
+    ;
+
     $('#card-show-weather .favorite-icon-action-btn').on('click', function() {
         var template = $("#card-show-weather");
         var city_id = template.find(".city-id").text();

@@ -66,6 +66,10 @@ $(document).ready(function () {
                 console.log(weather['id']);
 
                 // reset
+                if ($('#card-show-weather').hasClass('hidden')) {
+                    $('#card-show-weather').transition('fade');
+                }
+
                 var storage = $.localStorage;
                 if (!storage.isSet(weather['id'])) {
                     template.find(".favorite-text-action").text("Favorite City");
