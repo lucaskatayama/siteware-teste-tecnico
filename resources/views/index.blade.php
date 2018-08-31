@@ -40,7 +40,7 @@
 
 <div class="ui main text container">
 
-    <div class="ui equal width grid">
+    <div class="ui stackable equal width grid">
         <div class="column">
             @component('components.search')
             @endcomponent
