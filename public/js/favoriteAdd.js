@@ -34,6 +34,18 @@ $(document).ready(function () {
                     }
                 })
             ;
+
+            var item = $("#favorite-item-template").children().clone();
+            console.log(item);
+            item.prop('id', city_id);
+            item.text(storage.get(city_id));
+            item.appendTo("#favorite-segment");
+
+            var r = $('<button class="btn-favorite ui basic compact right floated mini button trash-favorite-icon-action-btn">' +
+                '<i class="trash fitted icon"></i><span class="city-id hidden">'+ city_id +'</span></button>');
+            $(item).append(r);
+
+            item.transition('fly left');
         }
 
         // exists
@@ -45,14 +57,15 @@ $(document).ready(function () {
     $('#card-show-weather .trash-favorite-icon-action-btn').on('click', function() {
         var template = $("#card-show-weather");
         var city_id = template.find(".city-id").text();
+        if (city_id === "") {
+            console.log(this.find(".city-id"));
+        }
         var name = template.find(".card-city-name").text();
 
         var storage = $.localStorage;
         // exists
         if (storage.isSet(city_id)) {
-            console.log(storage.get(city_id));
             storage.remove(city_id);
-            console.log(storage.get(city_id));
 
             $(template.find(".favorite-content"))
                 .transition({
@@ -79,5 +92,41 @@ $(document).ready(function () {
                 })
             ;
         }
+
+        var item = $("#favorite-segment").find("#" + city_id);
+
+        item.transition({
+            animation  : 'scale',
+            onComplete: function () {
+                item.remove();
+            }
+        });
+    });
+
+    $('#favorite-segment').on('click', '.trash-favorite-icon-action-btn', function() {
+        var city_id = $(this).find(".city-id").text();
+        console.log(city_id);
+
+        var storage = $.localStorage;
+        // exists
+        if (storage.isSet(city_id)) {
+            storage.remove(city_id);
+        }
+
+        var item = $("#favorite-segment").find("#" + city_id);
+        console.log(item);
+
+        item.transition({
+            animation  : 'scale',
+            onComplete: function () {
+                item.remove();
+
+                if (city_id === $("#card-show-weather").find(".city-id").text()) {
+                    $("#card-show-weather").find(".favorite-icon-action-btn").removeClass("red");
+                    $("#card-show-weather").find(".trash-favorite-icon-action-btn-").addClass("hidden");
+                    $("#card-show-weather").find(".favorite-text-action").text("Favorite City");
+                }
+            }
+        });
     });
 });
