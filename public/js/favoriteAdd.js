@@ -12,6 +12,10 @@ $(document).ready(function () {
             var r = $('<button class="btn-favorite ui basic compact right floated mini button trash-favorite-icon-action-btn">' +
                 '<i class="trash fitted icon"></i><span class="city-id hidden">' + $.localStorage.keys()[i] + '</span></button>');
             $(item).append(r);
+
+            var r = $('<button class="btn-favorite ui basic compact right floated mini button eye-favorite-icon-action-btn">' +
+                '<i class="eye fitted icon"></i><span class="city-id hidden">' + $.localStorage.keys()[i] + '</span></button>');
+            $(item).append(r);
         }
     }
 
@@ -77,6 +81,10 @@ $(document).ready(function () {
 
             var r = $('<button class="btn-favorite ui basic compact right floated mini button trash-favorite-icon-action-btn">' +
                 '<i class="trash fitted icon"></i><span class="city-id hidden">'+ city_id +'</span></button>');
+            $(item).append(r);
+
+            var r = $('<button class="btn-favorite ui basic compact right floated mini button eye-favorite-icon-action-btn">' +
+                '<i class="eye fitted icon"></i><span class="city-id hidden">'+ city_id +'</span></button>');
             $(item).append(r);
 
             item.transition('fly left');
