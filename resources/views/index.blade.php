@@ -29,8 +29,20 @@
 
 <div class="ui main text container">
 
-    @component('components.search')
-    @endcomponent
+    <div class="ui equal width grid">
+        <div class="column">
+            @component('components.search')
+            @endcomponent
+        </div>
+        <div class="four column centered row">
+            <div class="column">
+
+            </div>
+            <div class="column">
+
+            </div>
+        </div>
+    </div>
 
 </div>
 
