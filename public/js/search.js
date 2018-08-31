@@ -3,39 +3,44 @@ $(document).ready(function () {
         .search({
             type          : 'category',
             minCharacters : 3,
-            apiSettings   : {
-                onResponse: function(githubResponse) {
-                    var
-                        response = {
-                            results : {}
-                        }
-                    ;
-                    // translate GitHub API response to work with search
-                    $.each(githubResponse.items, function(index, item) {
-                        var
-                            language   = item.language || 'Unknown',
-                            maxResults = 8
-                        ;
-                        if(index >= maxResults) {
+            apiSettings: {
+                url: '//api.openweathermap.org/data/2.5/find?q={query}' +
+                '&type=like' +
+                '&units=metric' +
+                '&appid=232c8c2ef0ee39175db1823b9fe7cc1b',
+                onResponse: function (citiesResponse) {
+                    console.log(citiesResponse);
+                    var response = { // response as the items on the front-end
+                        results: {}
+                    };
+
+                    // here citiesResponse.items = $results['items']
+                    $.each(citiesResponse.list, function (index, item) {
+                        // here country = Category if you wish to have the results in that format
+                        var country = item.sys.country.toUpperCase() || 'Unknown',
+                            maxResults = 5;
+
+                        if (index >= maxResults)
                             return false;
-                        }
-                        // create new language category
-                        if(response.results[language] === undefined) {
-                            response.results[language] = {
-                                name    : language,
-                                results : []
+
+                        if (response.results[country] === undefined) {
+                            response.results[country] = {
+                                name: country,
+                                results: []
                             };
                         }
-                        // add result to category
-                        response.results[language].results.push({
-                            title       : item.name,
-                            description : item.description,
-                            url         : item.html_url
+                        console.log(item)
+                        console.log(item.sys)
+                        console.log(item.sys.country)
+                        response.results[country].results.push({
+                            title: item.name,
+                            description: item.weather[0].description,
                         });
                     });
+
                     return response;
-                },
-                url: '//api.github.com/search/repositories?q={query}'
+                }
             }
         })
+    ;
 });
