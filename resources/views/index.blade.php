@@ -34,9 +34,10 @@
             @component('components.search')
             @endcomponent
         </div>
-        <div class="four column centered row">
+        <div class="four column row">
             <div class="column">
-
+                @component('components.favorites')
+                @endcomponent
             </div>
             <div class="column">
 
