@@ -21,9 +21,20 @@
 <div class="ui fixed inverted menu">
     <div class="ui container">
         <a href="#" class="header item">
-            <img class="logo" src="https://www.placehold.it/100x100">
             Siteware Test
         </a>
+
+        <div class="right menu">
+            <a target="_blank" href="https://www.linkedin.com/in/joaomantovani" class="item">
+                <i class="linkedin icon"></i> Linkedin
+            </a>
+            <a target="_blank" href="https://github.com/joaomantovani" class="item">
+                <i class="github icon"></i> Github
+            </a>
+            <span class="item">
+                João Pedro Mantovani
+            </span>
+        </div>
     </div>
 </div>
 
@@ -48,16 +59,6 @@
 
 </div>
 
-{{--<div class="ui inverted vertical footer segment">--}}
-    {{--<div class="ui center aligned container">--}}
-        {{--<img src="https://www.placehold.it/100x100" class="ui centered mini image">--}}
-        {{--<div class="ui horizontal inverted small divided link list">--}}
-            {{--<a class="item" href="#">João Pedro Mantovani</a>--}}
-            {{--<a class="item" href="#">Github</a>--}}
-            {{--<a class="item" href="#">Linkedin</a>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

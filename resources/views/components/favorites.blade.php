@@ -1,4 +1,4 @@
-<div class="ui fluid segments" id="favorite-segment">
+<div class="ui fluid segments hidden" id="favorite-segment">
 
 </div>
 

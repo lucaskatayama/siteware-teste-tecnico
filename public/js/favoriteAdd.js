@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
+    var hasValue = false;
     for (var i = 0; i < $.localStorage.keys().length; i++) {
         if ($.localStorage.keys()[i].match(/^[0-9]+$/) != null) {
+            hasValue = true;
             var item = $("#favorite-item-template").children().clone();
             item.prop('id', $.localStorage.keys()[i]);
             item.text($.localStorage.get($.localStorage.keys()[i]));
@@ -13,15 +15,25 @@ $(document).ready(function () {
         }
     }
 
-    $('#favorite-segment .favorite-item')
-        .transition({
-            animation : 'scale',
-            reverse   : 'auto', // default setting
-            interval  : 200
-        })
-    ;
+    if (hasValue) {
+        if ($('#favorite-segment').hasClass('hidden')) {
+            $('#favorite-segment').transition('fade');
+        }
+
+        $('#favorite-segment .favorite-item')
+            .transition({
+                animation : 'scale',
+                reverse   : 'auto', // default setting
+                interval  : 200
+            })
+        ;
+    }
 
     $('#card-show-weather .favorite-icon-action-btn').on('click', function() {
+        if ($('#favorite-segment').hasClass('hidden')) {
+            $('#favorite-segment').transition('fade');
+        }
+
         var template = $("#card-show-weather");
         var city_id = template.find(".city-id").text();
         var name = template.find(".card-city-name").text();
