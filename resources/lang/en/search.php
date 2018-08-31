@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'placeholder' => 'These credentials do not match our records.',
+    'placeholder' => 'Search a city to discover about weather',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
