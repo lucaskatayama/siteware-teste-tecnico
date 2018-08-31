@@ -64,6 +64,8 @@
         crossorigin="anonymous"></script>
     <script src="{{ asset("js/semantic.min.js") }}"></script>
     <script src="{{ asset("js/search.js") }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-storage-api/1.9.4/jquery.storageapi.min.js"></script>
+    <script src="{{ asset("js/favoriteAdd.js") }}"></script>
 </body>
 
 </html>
